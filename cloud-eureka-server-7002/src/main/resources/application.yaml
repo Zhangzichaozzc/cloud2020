@@ -9,3 +9,8 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
+#  server:
+#    # 关闭 Eureka Server 的自我保护机制，默认是开启的
+#    enable-self-preservation: false
+#    # 设置 2 秒 间隔内没有收到 客户端的 心跳就 从 Eureka Server 中将其 从服务列表中删除
+#    eviction-interval-timer-in-ms: 2000

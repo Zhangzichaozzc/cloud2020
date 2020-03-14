@@ -1,0 +1,10 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service
+  cloud:
+    zookeeper:
+      # 指定 zookeeper 的连接地址
+      connect-string: 192.168.211.133:2181

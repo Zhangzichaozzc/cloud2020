@@ -2,6 +2,8 @@ package com.customer.springcloud.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +26,12 @@ public class PaymentController {
 
     @Autowired
     private PaymentService paymentService;
+
+    /**
+     * discoveryClient 可以获取到 Eureka Server 中的 service 服务 信息
+     */
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @Value("${server.port}")
     private Integer port;
@@ -52,6 +60,18 @@ public class PaymentController {
         CommonResult<Integer> result = new CommonResult<>();
         result.setData(port);
         return result;
+    }
+
+    @GetMapping("/discovery")
+    public Object discovery() {
+        for (String service : discoveryClient.getServices()) {
+            System.err.println(service);
+        }
+
+        for (ServiceInstance instance : discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE")) {
+            System.out.println(instance.getServiceId() + ", " + instance.getHost() + ": " + instance.getPort() + ": " + instance.getUri());
+        }
+        return discoveryClient;
     }
 
 }
