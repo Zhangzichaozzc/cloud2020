@@ -6,10 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * RestConfig
- *
- * @author Zichao Zhang
- * @date 2020/3/14
+ * 注意在使用自定义的 轮询算法来获取服务地址的时候，需要将 @LoadBalanced 注销掉，
+ * 否则 是一个 ServiceInstance.getUri 获取的服务地址无法访问复苏
  */
 @Configuration
 public class RestConfig {

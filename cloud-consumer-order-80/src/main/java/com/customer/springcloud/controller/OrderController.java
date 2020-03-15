@@ -1,6 +1,10 @@
 package com.customer.springcloud.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.customer.springcloud.bl.MyLoadBalancer;
 import com.customer.springcloud.entity.CommonResult;
 import com.customer.springcloud.entity.Payment;
 
@@ -25,6 +30,12 @@ public class OrderController {
     // 在 主配置类中 启动了 @EnableEurekaClient 后可以通过注册名去访问 服务提供者
     // 在 Spring Cloud Hoxton.RS1 中， 直接 添加 @EnableEurekaClient 不行，会报错，解决 bug 需要在 RestTemplate 组件注册时添加 @LoadBalanced 注解
     private static final String URL_PREFIX = "http://CLOUD-PAYMENT-SERVICE";
+
+    @Autowired
+    private MyLoadBalancer loadBalancer;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -61,4 +72,12 @@ public class OrderController {
         }
         return null;
     }
+
+    @GetMapping("/consumer/rule/ping")
+    public CommonResult<String> rulePing() {
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        ServiceInstance service = loadBalancer.getService(instances);
+        return restTemplate.getForObject(service.getUri() + "/ping", CommonResult.class);
+    }
+
 }

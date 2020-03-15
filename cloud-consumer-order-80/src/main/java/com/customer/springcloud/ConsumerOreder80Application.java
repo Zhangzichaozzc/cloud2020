@@ -4,6 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+
+import com.customer.rule.MyRule;
 
 /**
  * ConsumerOreder80Application
@@ -12,8 +15,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @date 2020/3/14
  */
 @SpringBootApplication
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @EnableEurekaClient
+// 使用 @RibbonClient 注解，必须指定 name， configuration 指定 对指定的服务使用的 负载均衡策略
+@RibbonClient(name = "CLOUD-PAYMENT-SERVICE", configuration = MyRule.class)
 public class ConsumerOreder80Application {
 
     public static void main(String[] args) {
