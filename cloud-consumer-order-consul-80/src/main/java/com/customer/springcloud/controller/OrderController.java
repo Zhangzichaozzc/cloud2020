@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OrderController {
 
-    private static final String URL_PREFIX = "http://cloud-consul-payment-service";
+    private static final String URL_PREFIX = "http://cloud-consul-payment-com.customer.springcloud.service";
 
     @Autowired
     private RestTemplate restTemplate;

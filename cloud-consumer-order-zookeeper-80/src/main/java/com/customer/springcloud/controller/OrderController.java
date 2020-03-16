@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class OrderController {
 
-    private static final String URL_PREFIX = "http://cloud-payment-service";
+    private static final String URL_PREFIX = "http://cloud-payment-com.customer.springcloud.service";
 
     @Autowired
     private RestTemplate restTemplate;

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-payment-service
+    name: cloud-payment-com.customer.springcloud.service
   cloud:
     consul:
       # 指定 consul 的端口
@@ -12,6 +12,6 @@ spring:
       host: localhost
       discovery:
         hostname: localhost
-        # service-name 为 consul 管理的 服务名， 可以通过 service-name 进行微服务调用，而不用使用地址和端口
-        # service-name 注册之后，自己也可以发现
-        service-name: cloud-consul-payment-service
+        # com.customer.springcloud.service-name 为 consul 管理的 服务名， 可以通过 com.customer.springcloud.service-name 进行微服务调用，而不用使用地址和端口
+        # com.customer.springcloud.service-name 注册之后，自己也可以发现
+        service-name: cloud-consul-payment-com.customer.springcloud.service

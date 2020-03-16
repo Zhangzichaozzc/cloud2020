@@ -30,7 +30,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     /**
-     * discoveryClient 可以获取到 Eureka Server 中的 service 服务 信息
+     * discoveryClient 可以获取到 Eureka Server 中的 com.customer.springcloud.service 服务 信息
      */
     @Autowired
     private DiscoveryClient discoveryClient;

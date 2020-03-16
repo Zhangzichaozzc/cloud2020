@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-payment-service
+    name: cloud-payment-com.customer.springcloud.service
   datasource:
     username: root
     password: root

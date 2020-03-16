@@ -3,10 +3,10 @@ server:
 
 spring:
   application:
-    name: cloud-order-service
+    name: cloud-order-com.customer.springcloud.service
   cloud:
     consul:
       host: localhost
       port: 8500
       discovery:
-        service-name: cloud-consul-order-service
+        service-name: cloud-consul-order-com.customer.springcloud.service

@@ -1,9 +1,9 @@
 server:
-  port: 80
+  port: 8001
 
 eureka:
   instance:
-    instance-id: ${spring.application.name}:80
+    instance-id: ${spring.application.name}:${server.port}
     prefer-ip-address: true
   client:
     service-url:
@@ -11,9 +11,4 @@ eureka:
 
 spring:
   application:
-    name: cloud-order-com.customer.springcloud.service
-
-
-info:
-  company.name: customer
-  project.name: ${spring.application.name}
+    name: cloud-payment-hystrix-service

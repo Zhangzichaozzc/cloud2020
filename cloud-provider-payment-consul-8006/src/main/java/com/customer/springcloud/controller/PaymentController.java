@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PaymentController {
 
-    public static final String URL_PREFIX = "http://cloud-consul-payment-service";
+    public static final String URL_PREFIX = "http://cloud-consul-payment-com.customer.springcloud.service";
 
     @Value("${server.port}")
     private Integer port;

@@ -1,0 +1,28 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+    register-with-eureka: false
+
+feign:
+  hystrix:
+    enabled: true
+
+# 默认在 timeout 时间超过 1秒，就会直接进行 fallback 处理
+# 使用 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=5000
+# ribbon.ReadTimeout=5000 ribbon.ConnectTimeout=5000 可以延长 timeout 时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+ribbon:
+  # 建立连接后从服务端读取到信息所需要的时间
+  ReadTimeout: 5000
+  # 建立连接所需要的时间，适用于网络正常的情况下，两端连接所需要的时间
+  ConnectTimeout: 5000
