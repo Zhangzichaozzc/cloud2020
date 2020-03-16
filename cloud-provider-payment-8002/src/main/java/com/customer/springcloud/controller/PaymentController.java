@@ -1,5 +1,7 @@
 package com.customer.springcloud.controller;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,6 +53,16 @@ public class PaymentController {
         CommonResult<Integer> result = new CommonResult<>();
         result.setData(port);
         return result;
+    }
+
+    @GetMapping("/timeout")
+    public String timeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return port + "";
     }
 
 }

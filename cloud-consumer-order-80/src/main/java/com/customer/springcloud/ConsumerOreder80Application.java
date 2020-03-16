@@ -15,7 +15,8 @@ import com.customer.rule.MyRule;
  * @date 2020/3/14
  */
 @SpringBootApplication
-@EnableDiscoveryClient
+// 在 Eureka Client 中不需要添加 @EurekaDiscoveryClient 就可以实现 服务发现
+//@EnableDiscoveryClient
 @EnableEurekaClient
 // 使用 @RibbonClient 注解，必须指定 name， configuration 指定 对指定的服务使用的 负载均衡策略
 @RibbonClient(name = "CLOUD-PAYMENT-SERVICE", configuration = MyRule.class)
