@@ -1,0 +1,44 @@
+server:
+  port: 8801
+
+eureka:
+  instance:
+    instance-id: send-8801.com
+    prefer-ip-address: true
+    # 设置 心跳的时间间隔
+    lease-renewal-interval-in-seconds: 2
+    # 服务实现的时间间隔
+    lease-expiration-duration-in-seconds: 5
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+
+spring:
+  application:
+    name: cloud-stream-provider
+  cloud:
+    stream:
+      # 配置要绑定的rabbitmq的服务信息
+      binders:
+        # 表示定义的 Rabbitmq 的名称，用于 binding 整合
+        defaultRabbit:
+          # 消息中间件的类型
+          type: rabbit
+          # 设置消息中间件相关的环境配置
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.211.170
+                port: 5672
+                username: guest
+                password: guest
+      # 服务的整合处理
+      bindings:
+        # 这个名字是一个通道的名称, 在容器中已经注册三个 MessageChannel的 Bean，其中一个的 BeanName 为 output
+        output:
+          # 表示要使用的 Exchange 名称定义
+          destination: studyExchange
+          # 病史消息类型
+          content-type: application/json
+          # 设置要绑定的消息中间件的具体名称
+          binder: defaultRabbit
