@@ -1,0 +1,31 @@
+server:
+  port: 3355
+
+spring:
+  #  application:
+  #    name: cloud-config-client
+  cloud:
+    config:
+      # 指定 Config Server 的uri
+      uri: http://localhost:3344
+      # 指定 github 中的 branch
+      label: master
+      # 根据 profile 获取到指定的配置信息
+      profile: dev
+      # 需要与 github 上的 yaml 文件名称一致
+      name: config
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+
+# 暴露控制端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

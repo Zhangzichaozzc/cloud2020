@@ -1,0 +1,23 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-server
+  cloud:
+    config:
+      server:
+        # 设置配置文件存在的地址
+        git:
+          # uri 只可以使用 https 的方式获取，而不能使用 ssh 的方式获取
+          uri: https://github.com/Zhangzichaozzc/microservicecloud-config.git
+          #          search-paths: microservicecloud-config.git
+          default-label: master
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
