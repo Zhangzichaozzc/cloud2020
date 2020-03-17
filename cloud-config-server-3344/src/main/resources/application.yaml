@@ -13,6 +13,12 @@ spring:
           uri: https://github.com/Zhangzichaozzc/microservicecloud-config.git
           #          search-paths: microservicecloud-config.git
           default-label: master
+  # 添加 rabbitmq 配置， Spring Cloud Bus 是使用 RabbitMQ 的广播来同步配置 Config Client 端的属性的
+  rabbitmq:
+    username: guest
+    password: guest
+    host: 192.168.211.170
+    port: 5672
 
 eureka:
   instance:
@@ -21,3 +27,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+
+# 暴露 bus 刷新配置的节点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'

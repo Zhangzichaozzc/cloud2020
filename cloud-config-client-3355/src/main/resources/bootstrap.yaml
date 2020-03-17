@@ -15,6 +15,13 @@ spring:
       # 需要与 github 上的 yaml 文件名称一致
       name: config
 
+  # 添加 RabbitMQ 的连接配置
+  rabbitmq:
+    username: guest
+    password: guest
+    host: 192.168.211.170
+    port: 5672
+
 eureka:
   client:
     service-url:

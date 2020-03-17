@@ -12,6 +12,12 @@
     <artifactId>cloud-config-client-3355</artifactId>
 
     <dependencies>
+        <!--引入 Spring Cloud Bus 的依赖，基于 RabbitMQ-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
+
         <!--引入 Spring Cloud Config Client 端配置-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

@@ -9,19 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-config-server-3344</artifactId>
+    <artifactId>cloud-config-client-3366</artifactId>
 
     <dependencies>
 
+        <!--添加 Spring Cloud Bus 的起来，基于 RabbitMQ 的-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
 
-        <!--添加 Spring Cloud Server 依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
         <dependency>
