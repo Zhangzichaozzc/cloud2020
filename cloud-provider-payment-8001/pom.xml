@@ -13,6 +13,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
         <!--添加 Eureka Client 依赖, 该依赖中不包含 spring-boot-starter-web 依赖，需要自己导入，但是在 server端是包括的-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

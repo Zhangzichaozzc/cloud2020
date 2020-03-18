@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class RouteConfig {
 
     /**
-     * 通过编码的方式在容器中入住 自定义的 RouteLocator 来 设置路由规则进行路由
+     * 通过编码的方式在容器中注入 自定义的 RouteLocator 来 设置路由规则进行路由
      */
 //    @Bean
 //    public RouteLocator customizeRouteLocator(RouteLocatorBuilder builder) {

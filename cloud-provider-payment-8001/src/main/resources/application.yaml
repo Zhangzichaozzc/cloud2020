@@ -9,6 +9,13 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/db2019?useUnicode=true&characterEncoding=utf-8
     type: com.alibaba.druid.pool.DruidDataSource
+  # 设置监控台的 地址
+  zipkin:
+    base-url: http://localhost:9411
+  # 设置全链路追踪的采样率， 采样率的值介于 0 - 1 之间， 0 是不采样，1 是全部采样
+  sleuth:
+    sampler:
+      probability: 1
 
 mybatis:
   configuration:
@@ -19,12 +26,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
-#      defaultZone: http://eureka7002.com:7002/eureka
+  #      defaultZone: http://eureka7002.com:7002/eureka
   instance:
     instance-id: ${spring.application.name}:${server.port}
     prefer-ip-address: true
     # Eureka Client 向 Eureka Server 发送心跳的时间, 默认 30 秒
-#    lease-renewal-interval-in-seconds: 1
+    #    lease-renewal-interval-in-seconds: 1
     # Eureka Server 在收到最后一次心跳后等待的时间上限(默认是90秒), 超时将剔除服务
 #    lease-expiration-duration-in-seconds: 2
 
