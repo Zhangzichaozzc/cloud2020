@@ -22,6 +22,7 @@ spring:
           content-type: application/json
           binder: defaultRabbit
           # 将两个消费者 都放在同一个 group 中，可以避免同一个应用的多个实例重复消费问题
+          # 指定分组后，会自动生成一个持久化的 Queue，可以避免消息丢失的问题
           group: customerA
 
 eureka:
