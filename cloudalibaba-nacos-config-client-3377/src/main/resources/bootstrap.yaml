@@ -1,0 +1,22 @@
+server:
+  port: 3377
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      # 配置从配置中心获取的 配置文件的后缀名
+      # 默认从 配置中心中获取的 dataId 为
+      # ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+      config:
+        file-extension: yaml
+        # 在 Nacos 作为 配置中心的时候也需要 指定 server-addr
+        server-addr: localhost:8848
+        # 指定 Nacos 中的分组信息
+#        group: TEST_GROUP
+        # 指定 Nacos 中的命名空间
+        namespace: 77581fe4-8476-4ab8-886b-64603d6364a6
+  application:
+    name: nacos-config-service
+

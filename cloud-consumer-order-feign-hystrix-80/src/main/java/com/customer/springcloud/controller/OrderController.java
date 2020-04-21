@@ -60,6 +60,7 @@ public class OrderController {
         return "在消费端做了服务降级处理";
     }
 
+    // 全局的Fallback 方法不能有参数，并且全局Fallback 方法的返回值需要兼容 标注有 @HystrixCommand 的方法
     public String defaultFallback() {
         return "Default Fallback method, 默认降级处理方法";
     }
